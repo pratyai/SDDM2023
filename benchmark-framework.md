@@ -32,7 +32,7 @@ There can be other optional columns as well that may be important for a particul
 
 The following variables are to be expected in `input_file`:
 
-- Adjacency Matrix (`adj_mat`: `Matrix`): For a Laplacian solver, the multiedges are not very relevant. So, we pick adjacency matrices over incidence matrices.
+- SDDM/Laplacian Matrix (`mat` : `Matrix` ): For a SDDM/Laplacian solver, the multiedges are not very relevant. So, we will just keep the SDDM/Laplacian matrix here.
 - RHS (`b`: `Vector`): This is the RHS `b` of the system `Lx = b`.
 - True solution (`x`: `Vector`): This is _one_ of the correct solution for the system `Lx = b` (ignoring the numerical errors induced by floating-point operations). We will adopt the convention of having an `x` where `sum(x) == 0`.
 
