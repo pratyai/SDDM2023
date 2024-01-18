@@ -1,0 +1,10 @@
+[deps]
+CSV = "336ed68f-0bac-5ca0-87d4-7b16caf5d00b"
+DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
+JLD2 = "033835bb-8acc-5ee8-8aae-3f567f8a3819"
+Laplacians = "6f8e5838-0efe-5de0-80a3-5fb4f8dbb1de"
+MATLAB = "10e44e05-a98a-55b3-a45b-ba969058deb6"
+Polynomials = "f27b6e38-b328-58d1-80ce-0feddd5e7a45"
+
+[compat]
+Laplacians = "1.4.1"
