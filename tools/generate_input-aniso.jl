@@ -26,6 +26,11 @@ function parse_cmdargs()
     help = "Argument `xi` for the function `aniso_grid_sddm()`(https://github.com/danspielman/Laplacians.jl/blob/c18861fdb14bd796acdcc93b9c5c58744023f424/src/graphGenGeom.jl#L684C10-L684C25)"
     arg_type = Float64
     required = true
+    "--seed"
+    help = "Seed for the randomizer"
+    arg_type = Int
+    required = false
+    default = 0
   end
   return parse_args(s)
 end
@@ -37,12 +42,13 @@ function main()
   local outfile = args["o"]
   local nnz::Int = args["nnz"]
   local xi::Float64 = args["xi"]
+  local seed::Int = args["seed"]
 
   local M = aniso_grid_sddm(nnz, xi)  # `M` is a Laplacian
   M = dropzeros(sparse(M))
   local n::Int = size(M, 1)  # `n` is the number of vertices
 
-  local rng = Xoshiro(0)  # pick a random number generate with a fixed seed
+  local rng = Xoshiro(seed)  # pick a random number generate with a fixed seed
   local x::Vector{Float64} = randn(rng, n)  # generate a random true solution `x`
   x .-= mean(x)  # ensure that `sum(x) ≈ 0`
 
