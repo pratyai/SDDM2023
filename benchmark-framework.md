@@ -30,6 +30,11 @@ There can be other optional columns as well that may be important for a particul
 - Relative PCG Tolerance (`pcg_rel_tol`: `float`): The error tolerance (w.r.t. the L2-norm of the RHS) for PCG algorithm which determines how many iterations the algorithm needs before producing an acceptable solution.
 - Maximum Iterations (`pcg_max_iter`: `int`): The maximum number of iterations the PCG algorithm is allowed to take.
 
+For our particular approximate Laplacian solver, the following optional columns can also be useful:
+
+- Split (`split`: `int`): Number of initial splits per edge on the original graph. Typically, it should be set to a value of `2`.
+- Merge (`merge`: `int`): When averaging multiedges, the maximum number of splits to keep. Typically, it should be set to the same value as `split`.
+
 The following variables are to be expected in `input_file`:
 
 - SDDM/Laplacian Matrix (`mat` : `Matrix` ): For a SDDM/Laplacian solver, the multiedges are not very relevant. So, we will just keep the SDDM/Laplacian matrix here.

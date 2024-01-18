@@ -1,3 +1,6 @@
+# Example
+# julia --project=. tools/produce_input_spec.jl -o aniso.spec /tmp/data/aniso_1M_1e-3.jld2
+
 using FromFile
 using ArgParse
 using CSV
@@ -31,6 +34,10 @@ function main()
     name = [splitext(basename(f))[1] for f in infiles],
     format = ["JLD2" for _ = 1:length(infiles)],
     input_file = [f for f in infiles],
+    pcg_rel_tol = [1e-6 for f in infiles],
+    pcg_max_iter = [100 for f in infiles],
+    split = [2 for f in infiles],
+    merge = [2 for f in infiles],
   )
   if specfile == ""
     @show t
