@@ -2,7 +2,7 @@
 
 julia_version = "1.10.0"
 manifest_format = "2.0"
-project_hash = "9c5a371616708600737e36b42356ab93938b645f"
+project_hash = "504a7a44d1a62b39dc93c3e1176e0b2aad3eb4c2"
 
 [[deps.ArgParse]]
 deps = ["Logging", "TextWrap"]
@@ -330,9 +330,9 @@ version = "1.0.0"
 
 [[deps.JLD2]]
 deps = ["FileIO", "MacroTools", "Mmap", "OrderedCollections", "Pkg", "PrecompileTools", "Printf", "Reexport", "Requires", "TranscodingStreams", "UUIDs"]
-git-tree-sha1 = "315b508ec5df53936532097ffe6e5deacbf41861"
+git-tree-sha1 = "7c0008f0b7622c6c0ee5c65cbc667b69f8a65672"
 uuid = "033835bb-8acc-5ee8-8aae-3f567f8a3819"
-version = "0.4.44"
+version = "0.4.45"
 
 [[deps.JLFzf]]
 deps = ["Pipe", "REPL", "Random", "fzf_jll"]
@@ -510,12 +510,6 @@ deps = ["Dates", "Logging"]
 git-tree-sha1 = "c1dd6d7978c12545b4179fb6153b9250c96b0075"
 uuid = "e6f89c97-d47a-5376-807f-9c37f3926c36"
 version = "1.0.3"
-
-[[deps.MATLAB]]
-deps = ["Libdl", "SparseArrays"]
-git-tree-sha1 = "f640678d27790992e2a697f60e6afb1be3ebb7fc"
-uuid = "10e44e05-a98a-55b3-a45b-ba969058deb6"
-version = "0.8.4"
 
 [[deps.MacroTools]]
 deps = ["Markdown", "Random"]
