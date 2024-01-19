@@ -44,8 +44,8 @@ function main()
   local xi::Float64 = args["xi"]
   local seed::Int = args["seed"]
 
-  local M = aniso_grid_sddm(nnz, xi)  # `M` is a Laplacian
-  M = dropzeros(sparse(M))
+  local M::SparseMatrixCSC{Float64,Int} = aniso_grid_sddm(nnz, xi)  # `M` is a Laplacian
+  dropzeros!(M)
   local n::Int = size(M, 1)  # `n` is the number of vertices
 
   local rng = Xoshiro(seed)  # pick a random number generate with a fixed seed
@@ -55,15 +55,18 @@ function main()
   local b::Vector{Float64} = M * x  # generate the RHS for `Lx = b`
   x ./= norm(b)  # normalize both `x` and `b`
   b ./= norm(b)
-  x = dropzeros(sparse(x))
-  b = dropzeros(sparse(x))
-
-  input_spec = Dict()
-  input_spec["mat"] = sparse(M)
-  input_spec["b"] = sparse(b)
-  input_spec["x"] = sparse(x)
 
   mkpath(dirname(outfile))
-  jldsave(outfile, true; mat = M, b, x)
+  jldsave(
+    outfile,
+    true;
+    mat_m = M.m,
+    mat_n = M.n,
+    mat_colptr = M.colptr,
+    mat_rowval = M.rowval,
+    mat_nzval = M.nzval,
+    b = b,
+    x = x,
+  )
 end
 main()

@@ -37,9 +37,14 @@ For our particular approximate Laplacian solver, the following optional columns 
 
 The following variables are to be expected in `input_file`:
 
-- SDDM/Laplacian Matrix (`mat` : `Matrix` ): For a SDDM/Laplacian solver, the multiedges are not very relevant. So, we will just keep the SDDM/Laplacian matrix here.
-- RHS (`b`: `Vector`): This is the RHS `b` of the system `Lx = b`.
-- True solution (`x`: `Vector`): This is _one_ of the correct solution for the system `Lx = b` (ignoring the numerical errors induced by floating-point operations). We will adopt the convention of having an `x` where `sum(x) == 0`.
+- SDDM/Laplacian Matrix: For a SDDM/Laplacian solver, the multiedges are not very relevant. So, we will just keep the SDDM/Laplacian matrix here. We explicitly store the information to construct a `SparseMatrixCSC`` as follows:
+  - (`mat_m`: `int`)
+  - (`mat_n`: `int`)
+  - (`mat_colptr`: `vector<int>`): 1-indexed.
+  - (`mat_rowval`: `vector<int>`): 1-indexed.
+  - (`mat_nzval`: `vector<float>`)
+- RHS (`b`: `vector<float>`): This is the RHS `b` of the system `Lx = b`.
+- True solution (`x`: `vector<float>`): This is _one_ of the correct solution for the system `Lx = b` (ignoring the numerical errors induced by floating-point operations). We will adopt the convention of having an `x` where `sum(x) == 0`.
 
 ## Output Spec
 

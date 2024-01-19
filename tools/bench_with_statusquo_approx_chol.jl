@@ -53,7 +53,18 @@ function main()
     local b = missing
     local x_corr = missing
     if r[:format] == "JLD2"
-      M, b, x_corr = load(r[:input_file], "mat", "b", "x")
+      local mat_m, mat_n, mat_colptr, mat_rowval, mat_nzval, tb, tx = load(
+        r[:input_file],
+        "mat_m",
+        "mat_n",
+        "mat_colptr",
+        "mat_rowval",
+        "mat_nzval",
+        "b",
+        "x",
+      )
+      M = SparseMatrixCSC(mat_m, mat_n, mat_colptr, mat_rowval, mat_nzval)
+      b, x_corr = tb, tx
     end
     local params = ApproxCholParams(:deg, 0, r[:split], r[:merge])
     local pcgits = Int[0]  # Read the documentation for `approxchol_sddm()` for the reason.
