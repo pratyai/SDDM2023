@@ -71,7 +71,18 @@ function main()
 
     #= Benchmarking process begins =#
 
-    # TODO: warm up
+    # warm up: solve the entire thing, then throw the results away
+    begin
+      local solver = approxchol_sddm(
+        M;
+        params = params,
+        tol = r[:pcg_rel_tol],
+        maxits = r[:pcg_max_iter],
+        pcgIts = pcgits,
+      )
+      local x = solver(b)
+    end
+
     # TODO: error handling
 
     GC.gc()  # first get the garbage collection out of the way
