@@ -27,7 +27,7 @@ function main()
   local args = parse_cmdargs()
   @show args
 
-  local infiles::Vector{String} = args["infiles"]
+  local infiles::Vector{String} = [strip(f) for f in args["infiles"]]
   local specfile::String = strip(args["o"])
 
   local t = DataFrame(

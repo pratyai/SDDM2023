@@ -46,7 +46,7 @@ function main()
   )
 
   for r in eachrow(t)
-    @show r
+    println("processing: ", r[:name], " => ", r[:input_file])
 
     # Various setup wroks.
     local M = missing

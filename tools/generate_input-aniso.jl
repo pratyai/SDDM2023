@@ -39,7 +39,7 @@ function main()
   local args = parse_cmdargs()
   @show args
 
-  local outfile = args["o"]
+  local outfile = strip(args["o"])
   local nnz::Int = args["nnz"]
   local xi::Float64 = args["xi"]
   local seed::Int = args["seed"]
